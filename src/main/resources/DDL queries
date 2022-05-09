@@ -1,1 +1,6 @@
-inse
+show databases;
+
+-- create database yummy_pizza_restro;
+create database yummy_pizza_restro;
+
+# todo insert required tables create queries and sample insert queries
