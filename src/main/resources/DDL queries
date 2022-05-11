@@ -3,4 +3,17 @@ show databases;
 -- create database yummy_pizza_restro;
 create database yummy_pizza_restro;
 
-# todo insert required tables create queries and sample insert queries
+-- todo insert required tables create queries and sample insert queries
+
+show databases;
+
+create table menu (
+    product_id int primary key,
+productName varchar(50),
+productPrice double,
+productType varchar(50), -- // enum
+calories double,
+pizzaBase varchar(50),-- // enum
+pizzaSize varchar(50), -- // enum
+ pizzaSauce varchar(50) -- // enum
+)
