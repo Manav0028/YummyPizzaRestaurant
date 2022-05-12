@@ -35,7 +35,6 @@ public class Customer {
     public int getCustomerID() {
         return customerID;
     }
-
     public void setCustomerID(int customerID) {
         this.customerID = customerID;
     }
@@ -43,7 +42,6 @@ public class Customer {
     public String getFirstName() {
         return firstName;
     }
-
     public void setFirstName(String firstName) {
         this.firstName = firstName;
     }
@@ -51,7 +49,6 @@ public class Customer {
     public String getLastName() {
         return lastName;
     }
-
     public void setLastName(String lastName) {
         this.lastName = lastName;
     }
@@ -59,7 +56,6 @@ public class Customer {
     public String getEmail() {
         return email;
     }
-
     public void setEmail(String email) {
         this.email = email;
     }
@@ -67,7 +63,6 @@ public class Customer {
     public Long getPhoneNumber() {
         return phoneNumber;
     }
-
     public void setPhoneNumber(Long phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
@@ -75,7 +70,6 @@ public class Customer {
     public String getDeliveryAddress() {
         return deliveryAddress;
     }
-
     public void setDeliveryAddress(String deliveryAddress) {
         this.deliveryAddress = deliveryAddress;
     }
@@ -83,8 +77,10 @@ public class Customer {
     public boolean isMember() {
         return isMember;
     }
-
     public void setMember(boolean member) {
         isMember = member;
     }
+
+    public String toString() {return customerID + ": " + lastName + ", " + firstName;}
+
 }
