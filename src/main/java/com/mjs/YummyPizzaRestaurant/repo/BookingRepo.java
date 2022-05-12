@@ -1,5 +1,7 @@
 package com.mjs.YummyPizzaRestaurant.repo;
 
-public class BookingRepo {
+import com.mjs.YummyPizzaRestaurant.model.Booking;
+import org.springframework.data.repository.CrudRepository;
+public interface BookingRepo extends CrudRepository<Booking, Integer> {
 
 }

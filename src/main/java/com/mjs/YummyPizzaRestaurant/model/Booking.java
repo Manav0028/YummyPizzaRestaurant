@@ -1,14 +1,16 @@
 package com.mjs.YummyPizzaRestaurant.model;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import java.time.LocalDateTime;
 import java.util.Date;
 
 @Entity
 public class Booking {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private int bookingID;
 
     private Date bookingDate; //Need booking date?
@@ -16,6 +18,10 @@ public class Booking {
     private Date diningDateTime;
     private int customerID;
     private boolean groupBooking;
+
+    private Booking() {
+
+    }
 
     public Booking(int bookingID, Date bookingDate, int numberOfPerson,
                    Date diningDateTime, int customerID, boolean groupBooking){

@@ -16,6 +16,10 @@ public class Customer {
     private String deliveryAddress;
     private boolean isMember;
 
+    private Customer() {
+
+    }
+
     public Customer (int customerID, String firstName, String lastName,
                      String email, Long phoneNumber, String deliveryAddress,
                      boolean isMember) {
