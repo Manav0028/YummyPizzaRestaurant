@@ -1,13 +1,20 @@
 package com.mjs.YummyPizzaRestaurant.model;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
+@Entity
 public class Customer {
-    int customerID;
-    String firstName;
-    String lastName;
-    String email;
-    Long phoneNumber;
-    String deliveryAddress;
-    boolean isMember;
+
+    @Id
+    private int customerID;
+
+    private String firstName;
+    private String lastName;
+    private String email;
+    private Long phoneNumber;
+    private String deliveryAddress;
+    private boolean isMember;
 
     public Customer (int customerID, String firstName, String lastName,
                      String email, Long phoneNumber, String deliveryAddress,

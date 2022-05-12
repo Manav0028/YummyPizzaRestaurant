@@ -1,15 +1,21 @@
 package com.mjs.YummyPizzaRestaurant.model;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
 import java.time.LocalDateTime;
 import java.util.Date;
 
+@Entity
 public class Booking {
-    int bookingID;
-    Date bookingDate; //Need booking date?
-    int numberOfPerson;
-    Date diningDateTime;
-    int customerID;
-    boolean groupBooking;
+
+    @Id
+    private int bookingID;
+
+    private Date bookingDate; //Need booking date?
+    private int numberOfPerson;
+    private Date diningDateTime;
+    private int customerID;
+    private boolean groupBooking;
 
     public Booking(int bookingID, Date bookingDate, int numberOfPerson,
                    Date diningDateTime, int customerID, boolean groupBooking){
