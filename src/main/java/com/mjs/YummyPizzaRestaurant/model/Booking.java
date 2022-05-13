@@ -13,9 +13,8 @@ public class Booking {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int bookingID;
 
-    private Date bookingDate; //Need booking date?
     private int numberOfPerson;
-    private Date diningDateTime;
+    private Date bookingDate;
     private int customerID;
     private boolean groupBooking;
 
@@ -24,11 +23,10 @@ public class Booking {
     }
 
     public Booking(int bookingID, Date bookingDate, int numberOfPerson,
-                   Date diningDateTime, int customerID, boolean groupBooking){
+                   int customerID, boolean groupBooking){
         this.bookingID = bookingID;
         this.bookingDate = bookingDate;
         this.numberOfPerson = numberOfPerson;
-        this.diningDateTime = diningDateTime;
         this.customerID = customerID;
         this.groupBooking = groupBooking;
     }
@@ -52,13 +50,6 @@ public class Booking {
     }
     public void setNumberOfPerson(int numberOfPerson) {
         this.numberOfPerson = numberOfPerson;
-    }
-
-    public Date getDiningDateTime() {
-        return diningDateTime;
-    }
-    public void setDiningDateTime(Date diningDateTime) {
-        this.diningDateTime = diningDateTime;
     }
 
     public int getCustomerID() {

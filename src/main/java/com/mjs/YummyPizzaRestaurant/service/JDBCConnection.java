@@ -7,7 +7,7 @@ public class JDBCConnection {
     public Connection getConnection() {
         try {
             Class.forName("com.mysql.jdbc.Driver");
-            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/nofreeride", "root", "teamcoolmjs");
+            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/yummy_pizza_restro", "root", "Jwl86mysql");
             return conn;
         }
         catch(Exception e){

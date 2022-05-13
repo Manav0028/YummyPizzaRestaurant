@@ -26,12 +26,6 @@ public class YummyPizzaRestaurantApplication implements InitializingBean {
 
 
 
-
-
-
-
-
-
 	public static void main(String[] args) {
 //		SpringApplication.run(YummyPizzaRestaurantApplication.class, args);
 		SpringApplicationBuilder builder = new SpringApplicationBuilder(YummyPizzaRestaurantApplication.class);
