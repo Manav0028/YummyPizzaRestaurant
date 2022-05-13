@@ -1,7 +1,7 @@
 package com.mjs.YummyPizzaRestaurant.model.enums;
 
 public enum PizzaBase {
-    small,
-    medium,
-    large
+    traditional,
+    wholemeal,
+    glutenFree
 }
