@@ -1,6 +1,8 @@
 package com.mjs.YummyPizzaRestaurant;
 
 import com.mjs.YummyPizzaRestaurant.gui.PizzaMenu;
+import com.mjs.YummyPizzaRestaurant.repo.BookingRepo;
+import com.mjs.YummyPizzaRestaurant.repo.CustomerRepo;
 import com.mjs.YummyPizzaRestaurant.repo.MenuRepo;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +17,12 @@ public class YummyPizzaRestaurantApplication implements InitializingBean {
 
 	@Autowired
 	private MenuRepo menuRepo;
+
+	@Autowired
+	private BookingRepo bookingRepo;
+
+	@Autowired
+	private CustomerRepo customerRepo;
 
 
 
