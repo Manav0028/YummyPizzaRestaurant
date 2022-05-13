@@ -3,17 +3,154 @@ show databases;
 -- create database yummy_pizza_restro;
 create database yummy_pizza_restro;
 
+use  yummy_pizza_restro;
+
 -- todo insert required tables create queries and sample insert queries
 
 show databases;
 
-create table menu (
-    product_id int primary key,
-productName varchar(50),
-productPrice double,
-productType varchar(50), -- // enum
-calories double,
-pizzaBase varchar(50),-- // enum
-pizzaSize varchar(50), -- // enum
- pizzaSauce varchar(50) -- // enum
-)
+CREATE TABLE menu
+(
+    product_id    INT          NOT NULL,
+    product_name  VARCHAR(255) NULL,
+    product_price DOUBLE       NULL,
+    product_type  VARCHAR(255) NULL,
+    calories      DOUBLE       NULL,
+    pizza_base    VARCHAR(255) NULL,
+    pizza_size    VARCHAR(255) NULL,
+    pizza_sauce   VARCHAR(255) NULL,
+    CONSTRAINT pk_menu PRIMARY KEY (product_id)
+);
+
+
+insert into menu values (1, 'p1 traditional small', 11.2, 'pizza', 232.4, 'traditional','small','tomato');
+insert into menu values (2, 'p1 traditional medium', 13.2, 'pizza', 262.4, 'traditional','medium','tomato');
+insert into menu values (3, 'p1 traditional large', 16.5, 'pizza', 332.4, 'traditional','large','tomato');
+
+insert into menu values (4, 'p1 wholemeal small', 11.2, 'pizza', 232.4, 'wholemeal','small','tomato');
+insert into menu values (5, 'p1 wholemeal medium', 13.2, 'pizza', 262.4, 'wholemeal','medium','tomato');
+insert into menu values (6, 'p1 wholemeal large', 16.5, 'pizza', 332.4, 'wholemeal','large','tomato');
+
+insert into menu values (7, 'p1 glutenFree small', 11.2, 'pizza', 232.4, 'glutenFree','small','tomato');
+insert into menu values (8, 'p1 glutenFree medium', 13.2, 'pizza', 262.4, 'glutenFree','medium','tomato');
+insert into menu values (9, 'p1 glutenFree large', 16.5, 'pizza', 332.4, 'glutenFree','large','tomato');
+
+insert into menu values (10, 'p1 glutenFree small', 11.2, 'pizza', 232.4, 'glutenFree','small','barbeque');
+insert into menu values (11, 'p1 glutenFree medium', 13.2, 'pizza', 262.4, 'glutenFree','medium','barbeque');
+insert into menu values (12, 'p1 glutenFree large', 16.5, 'pizza', 332.4, 'glutenFree','large','barbeque');
+
+insert into menu values (13, 'p1 wholemeal small', 11.2, 'pizza', 232.4, 'wholemeal','small','barbeque');
+insert into menu values (14, 'p1 wholemeal medium', 13.2, 'pizza', 262.4, 'wholemeal','medium','barbeque');
+insert into menu values (15, 'p1 wholemeal large', 16.5, 'pizza', 332.4, 'wholemeal','large','barbeque');
+
+insert into menu values (16, 'p1 wholemeal small', 11.2, 'pizza', 232.4, 'wholemeal','small','tomato');
+insert into menu values (17, 'p1 wholemeal medium', 13.2, 'pizza', 262.4, 'wholemeal','medium','tomato');
+insert into menu values (18, 'p1 wholemeal large', 16.5, 'pizza', 332.4, 'wholemeal','large','tomato');
+
+insert into menu values (19, 'p1 traditional small', 11.2, 'pizza', 232.4, 'traditional','small','tomato');
+insert into menu values (20, 'p1 traditional medium', 13.2, 'pizza', 262.4, 'traditional','medium','tomato');
+insert into menu values (21, 'p1 traditional large', 16.5, 'pizza', 332.4, 'traditional','large','tomato');
+
+insert into menu values (22, 'p1 traditional small', 11.2, 'pizza', 232.4, 'traditional','small','barbeque');
+insert into menu values (23, 'p1 traditional medium', 13.2, 'pizza', 262.4, 'traditional','medium','barbeque');
+insert into menu values (24, 'p1 traditional large', 16.5, 'pizza', 332.4, 'traditional','large','barbeque');
+
+CREATE TABLE topping
+(
+    topping_id   INT          NOT NULL,
+    topping_name VARCHAR(255) NULL,
+    topping_type VARCHAR(255) NULL,
+    product_id   INT          NULL,
+    CONSTRAINT pk_topping PRIMARY KEY (topping_id)
+);
+/*a.	supreme,
+b.	sausage sizzle,
+c.	Hawaiian,
+d.	chicken
+    i.	sweet chilli chicken
+    ii.	peri-peri chicken
+e.	veggie lovers’ pizza
+    i.	garden goodness
+    ii.	vegan cheese
+ */
+
+insert into topping values(1, 'supreme sizzle',null, 1);
+insert into topping values(2, 'Hawaiian',null, 2);
+insert into topping values(3, 'sweet chilli chicken','chicken', 2);
+insert into topping values(4, 'peri-peri chicken','chicken', 1);
+insert into topping values(5, 'garden goodness','veggie', 1);
+insert into topping values(6, 'vegan cheese','veggie', 1);
+
+insert into topping values(7, 'supreme sizzle',null, 3);
+insert into topping values(8, 'Hawaiian',null, 3);
+insert into topping values(9, 'sweet chilli chicken','chicken', 4);
+insert into topping values(10, 'peri-peri chicken','chicken', 4);
+insert into topping values(11, 'garden goodness','veggie', 4);
+insert into topping values(12, 'vegan cheese','veggie', 4);
+
+select * from menu m, topping t where m.product_id = t.product_id;
+
+CREATE TABLE customer_order
+(
+    order_id               INT          NOT NULL,
+    customer_id            INT          NULL,
+    order_type             VARCHAR(255) NULL,
+    order_date             datetime     NULL,
+    total_amount           DOUBLE       NULL,
+    eating_option          VARCHAR(255) NULL,
+    discount_type          VARCHAR(255) NULL,
+    order_id_order_item_id INT          NOT NULL,
+    CONSTRAINT pk_customerorder PRIMARY KEY (order_id)
+);
+
+CREATE TABLE order_item
+(
+    order_item_id  INT    NOT NULL,
+    order_id       INT    NULL,
+    product_id     INT    NULL,
+    order_quantity INT    NULL,
+    order_price    DOUBLE NULL,
+    CONSTRAINT pk_orderitem PRIMARY KEY (order_item_id)
+);
+
+ALTER TABLE customer_order
+    ADD CONSTRAINT FK_CUSTOMERORDER_ON_ORDERID_ORDERITEMID
+        FOREIGN KEY (order_id_order_item_id)
+            REFERENCES order_item (order_item_id);
+
+CREATE TABLE payment
+(
+    payment_id     INT          NOT NULL,
+    payment_amount DOUBLE       NULL,
+    payment_type   VARCHAR(255) NULL,
+    payment_date   datetime     NULL,
+    CONSTRAINT pk_payment PRIMARY KEY (payment_id)
+);
+
+CREATE TABLE customer
+(
+    customer_id       INT          NOT NULL,
+    first_name       VARCHAR(255) NULL,
+    last_name        VARCHAR(255) NULL,
+    email            VARCHAR(255) NULL,
+    phone            BIGINT       NULL,
+    delivery_address VARCHAR(255) NULL,
+    is_member        BIT(1)       NULL,
+    CONSTRAINT pk_customer PRIMARY KEY (customer_id)
+);
+
+insert into customer
+values (1, 'Manav', 'Sharma', 'manav.s@gamil.com', 9879853346,
+        '1 Brown St, Ashfield, 2131, NSW', 1);
+
+insert into customer
+values (2, 'Syafa', 'Sofiena', 'syafa.s@gamil.com', 9234563346,
+        '11 Brown St, Ashfield, 2131, NSW', 0);
+
+insert into customer
+values (3, 'Jen', 'Wei', 'Jen.w@gamil.com', 9897969542,
+        '11 Kings St, Broadway, 2231, NSW', 0);
+
+select * from customer;
+
+# drop database yummy_pizza_restro;
