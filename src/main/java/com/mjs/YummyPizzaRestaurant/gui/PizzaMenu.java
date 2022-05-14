@@ -1,13 +1,9 @@
 package com.mjs.YummyPizzaRestaurant.gui;
 
-import com.mjs.YummyPizzaRestaurant.model.CartItem;
-import com.mjs.YummyPizzaRestaurant.model.CustomerOrder;
 import com.mjs.YummyPizzaRestaurant.model.Menu;
-import com.mjs.YummyPizzaRestaurant.model.OrderItem;
 import com.mjs.YummyPizzaRestaurant.repo.MenuRepo;
-import com.mjs.YummyPizzaRestaurant.repo.OrderRepo;
-import com.mjs.YummyPizzaRestaurant.repo.ToppingRepo;
-import com.mjs.YummyPizzaRestaurant.service.OrderServices;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
@@ -15,29 +11,35 @@ import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import javax.swing.table.AbstractTableModel;
 import java.awt.event.*;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class PizzaMenu extends JFrame{
-    private MenuRepo menuRepo ;
-    private OrderRepo orderRepo;
-    private ToppingRepo toppingRepo;
 
+    private JList list1;
+    private JPanel listPanel;
+    private JPanel tablePanel;
+    private JTable pizzaTable;
+
+    JScrollPane scrollPane;
+
+    private ArrayList<Menu> menu;
+
+    private Object[][] data;
+    private Object[] columns;
+
+    private MenuRepo menuRepo ;
     private MenuTableModel model ;
+
     private Menu selectedMenu ;
 
     private JPanel contentPane;
     private JTable tblMenus;
-    private JButton btnCancel;
+    private JButton btnEditMenu;
     private JButton btnAddMenu;
-    private JButton btnSeeOrder;
 
-    private CustomerOrder order;
-    private List<OrderItem> items;
-    private List<CartItem> cartItems;
-    private Map<String, CartItem> cartMap;
-    private OrderServices orderServices;
-
-
+    JFrame frame;
 
     public static void main(String... args) {
         JFrame frame = new JFrame("JTable Test");
@@ -50,6 +52,78 @@ public class PizzaMenu extends JFrame{
 
     }
 
+//    private void createUIComponents() {
+//        // TODO: place custom component creation code here
+//
+//        columns = new String[]{"id", "productName", "productPrice",
+//        "productType", "calories", "pizzaBase", "pizzaSize", "pizzaSauce"};
+//        data = new Object[][]{{1, "productName1", "productPric1e",
+//                "pro1ductType", "calo1ries", "pizzaBas1e", "piz1zaSize", "pizz1aSauce"}
+//        };
+//        pizzaTable = new JTable(data, columns);
+//        list1 = new JList(data);
+//        scrollPane = new JScrollPane();
+//        tablePanel = new JPanel();
+//        tablePanel.add(pizzaTable);
+//        listPanel = new JPanel();
+//        listPanel.add(list1);
+//        scrollPane.add(listPanel);
+//        scrollPane.add(tablePanel);
+//        JScrollPane scrollPane2 = new JScrollPane(pizzaTable);
+//
+//        frame = new JFrame("JTable Test");
+//        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+////        JTable table = pMenu.createUIComponents();
+////        JScrollPane scrollPane = new JScrollPane(table);
+//        frame.getContentPane().add(scrollPane);
+////        frame.getContentPane().add(scrollPane2);
+//        frame.pack();
+//        frame.setVisible(true);
+//
+//
+//    }
+
+//    private void createUIComponents2() {
+//        // TODO: place custom component creation code here
+//        Iterator<Menu> itr = menuRepo.findAll().iterator();
+//        menu = new ArrayList<>();
+//        while(itr.hasNext()) {
+//            menu.add(itr.next());
+//            System.out.println(menu.get(menu.size()-1).getProductName());
+//        }
+//
+//        StringBuilder dataString = new StringBuilder();
+//        for(int i = 0; i < menu.size(); i++) {
+//            dataString.append(this.convertObjectToString(menu.get(i))).append(",");
+//        }
+//        System.out.println(dataString);
+////        data = new Object[][]{{menu.get(0)}, {menu.get(1)}};
+//        data = new Object[][]{{1, "p1 traditional small", 11.2, "pizza", 232.4, "traditional", "small", "tomato" }};
+//
+////        -----
+//
+//        System.out.println("ui2-----" + data[0][1]);
+//        pizzaTable = new JTable(data, columns);
+//        list1 = new JList(data);
+//        scrollPane = new JScrollPane();
+//        tablePanel = new JPanel();
+//        tablePanel.add(pizzaTable);
+//        listPanel = new JPanel();
+//        listPanel.add(list1);
+//        scrollPane.add(listPanel);
+//        scrollPane.add(tablePanel);
+//
+//        frame.setTitle("JTable");
+//        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+////        JTable table = pMenu.createUIComponents();
+////        JScrollPane scrollPane = new JScrollPane(table);
+//        frame.getContentPane().add(scrollPane);
+////        frame.getContentPane().add(scrollPane2);
+//        frame.pack();
+//        frame.setVisible(true);
+//    }
+//{1, "p1 traditional small", 11.2, "pizza", 232.4, "traditional", "small", "tomato" }
+
 
     private String convertObjectToString(Menu m) {
         String rowData = "{" + m.getProductId() + ", \""
@@ -61,57 +135,38 @@ public class PizzaMenu extends JFrame{
         return rowData;
     }
 
-    public PizzaMenu(MenuRepo menuRepo, ToppingRepo toppingRepo, OrderRepo orderRepo) {
-
-        this.order = new CustomerOrder();
-        this.order.setCustomerId(1);
-        this.order.setOrderDate(new Date());
-
-        this.items = new ArrayList<>();
-        this.orderServices = new OrderServices();
-        this.cartItems = new ArrayList<>();
-        this.cartMap = new HashMap<>();
+    public PizzaMenu(MenuRepo menuRepo) {
 
         this.menuRepo = menuRepo ;
         this.model = new MenuTableModel() ;
-        this.toppingRepo = toppingRepo;
-        this.orderRepo = orderRepo;
 
 
-        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        this.setBounds(100, 100, 900, 450); //frame bounds
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setBounds(100, 100, 450, 300);
         contentPane = new JPanel();
         contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
         setContentPane(contentPane);
 
         JLabel lblNewLabel = new JLabel("Menu");
 
-        btnAddMenu = new JButton("Add to Cart");
-        btnAddMenu.setEnabled(false);
+        btnAddMenu = new JButton("Add Menu");
         btnAddMenu.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                addToCart(selectedMenu);
-            }
-        });
-
-        btnSeeOrder = new JButton("View Cart");
-        btnSeeOrder.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseClicked(MouseEvent e) {
-                viewCart();
-            }
-        });
-
-        btnCancel = new JButton("Add to Cart");
-        btnCancel.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseClicked(MouseEvent e) {
-                dispose();
+                addMenu();
             }
         });
 
         JScrollPane scrollPane = new JScrollPane();
+
+        btnEditMenu = new JButton("Edit Menu");
+        btnEditMenu.setEnabled(false);
+        btnEditMenu.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                editMenu(selectedMenu);
+            }
+        });
 
         GroupLayout gl_contentPane = new GroupLayout(contentPane);
         gl_contentPane.setHorizontalGroup(
@@ -122,8 +177,7 @@ public class PizzaMenu extends JFrame{
                                         .addComponent(scrollPane, GroupLayout.DEFAULT_SIZE, 428, Short.MAX_VALUE)
                                         .addComponent(lblNewLabel)
                                         .addGroup(GroupLayout.Alignment.TRAILING, gl_contentPane.createSequentialGroup()
-                                                .addComponent(btnCancel)
-                                                .addComponent(btnSeeOrder)
+                                                .addComponent(btnEditMenu)
                                                 .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
                                                 .addComponent(btnAddMenu, GroupLayout.PREFERRED_SIZE, 139, GroupLayout.PREFERRED_SIZE)))
                                 .addContainerGap())
@@ -138,8 +192,7 @@ public class PizzaMenu extends JFrame{
                                 .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(gl_contentPane.createParallelGroup(GroupLayout.Alignment.BASELINE)
                                         .addComponent(btnAddMenu)
-                                        .addComponent(btnCancel)
-                                        .addComponent(btnSeeOrder)))
+                                        .addComponent(btnEditMenu)))
         );
 
         tblMenus = new JTable(model);
@@ -153,7 +206,7 @@ public class PizzaMenu extends JFrame{
                 else
                     selectedMenu = null ;
 
-                btnAddMenu.setEnabled(selectedMenu != null);
+                btnEditMenu.setEnabled(selectedMenu != null);
             }
         });
 
@@ -161,29 +214,20 @@ public class PizzaMenu extends JFrame{
         contentPane.setLayout(gl_contentPane);
     }
 
-    private void viewCart() {
-        new CartDetails(cartMap, orderRepo);
-    }
-
-    private void addToCart(Menu menu) {
+    private void addMenu() {
         // TODO (in Step 2)
 //        CreateMenu createMenu = new CreateMenu();
 //        createMenu.pack();
 //        createMenu.setVisible(true);
-        ToppingsUI toppingsUI = new ToppingsUI(toppingRepo, menu);
-        toppingsUI.pack();
-        toppingsUI.setVisible(true);
-
-        CartItem item = toppingsUI.getCartItem();
-        if(cartMap.containsKey(item.getProductToppingId())) {
-            cartMap.get(item.getProductToppingId()).setQuantity(cartMap.get(item.getProductToppingId()).getQuantity() + 1);
-            cartMap.get(item.getProductToppingId()).setProductPrice(cartMap.get(item.getProductToppingId()).getQuantity() *
-                    cartMap.get(item.getProductToppingId()).getProductPrice());
-        } else {
-            cartMap.put(item.getProductToppingId(), item);
-        }
     }
 
+    private void editMenu(Menu menu) {
+        //TODO (in Step 3)
+    }
+
+    private void createUIComponents() {
+        // TODO: place custom component creation code here
+    }
 
     private class MenuTableModel extends AbstractTableModel {
 
