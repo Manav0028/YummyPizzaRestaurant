@@ -103,7 +103,7 @@ public class PizzaMenu extends JFrame{
             }
         });
 
-        btnCancel = new JButton("Add to Cart");
+        btnCancel = new JButton("Cancel");
         btnCancel.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
@@ -166,10 +166,6 @@ public class PizzaMenu extends JFrame{
     }
 
     private void addToCart(Menu menu) {
-        // TODO (in Step 2)
-//        CreateMenu createMenu = new CreateMenu();
-//        createMenu.pack();
-//        createMenu.setVisible(true);
         ToppingsUI toppingsUI = new ToppingsUI(toppingRepo, menu);
         toppingsUI.pack();
         toppingsUI.setVisible(true);
