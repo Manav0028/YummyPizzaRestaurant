@@ -18,15 +18,20 @@ public class MakeGroupBooking extends JFrame {
         initComponents();
     }
 
-    private void nextButtonMouseClicked(MouseEvent e) {
-        //if (txtNumOfPeople.)
-        //JOptionPane.showMessageDialog(null, "Ok? Ok!");
-        // TO-DO: Check number of people
-    }
+    private Booking booking;
 
     private void cancelButtonMouseClicked(MouseEvent e) {
-        // To Do: Code to close window
+        close();
     }
+
+    private void okButtonMouseClicked(MouseEvent e) {
+        //if (txtNumOfPeople.getText().)
+
+
+        JOptionPane.showMessageDialog(null, "Your group booking is confirmed.");
+    }
+
+
 
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
@@ -35,8 +40,13 @@ public class MakeGroupBooking extends JFrame {
         contentPanel = new JPanel();
         label1 = new JLabel();
         txtNumOfPeople = new JTextField();
+        label2 = new JLabel();
+        txtDate = new JTextField();
+        label3 = new JLabel();
+        label4 = new JLabel();
+        txtName = new JTextField();
         buttonBar = new JPanel();
-        nextButton = new JButton();
+        okButton = new JButton();
         cancelButton = new JButton();
 
         //======== this ========
@@ -47,42 +57,71 @@ public class MakeGroupBooking extends JFrame {
         //======== dialogPane ========
         {
             dialogPane.setBorder(new EmptyBorder(12, 12, 12, 12));
-            dialogPane.setBorder(new javax.swing.border.CompoundBorder(new javax.swing.border.TitledBorder(new javax.swing.border.EmptyBorder
-            (0,0,0,0), "JF\u006frmDes\u0069gner \u0045valua\u0074ion",javax.swing.border.TitledBorder.CENTER,javax.swing.border
-            .TitledBorder.BOTTOM,new java.awt.Font("D\u0069alog",java.awt.Font.BOLD,12),java.awt
-            .Color.red),dialogPane. getBorder()));dialogPane. addPropertyChangeListener(new java.beans.PropertyChangeListener(){@Override public void
-            propertyChange(java.beans.PropertyChangeEvent e){if("\u0062order".equals(e.getPropertyName()))throw new RuntimeException()
-            ;}});
+            dialogPane.setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax. swing. border.
+            EmptyBorder( 0, 0, 0, 0) , "JF\u006frmD\u0065sig\u006eer \u0045val\u0075ati\u006fn", javax. swing. border. TitledBorder. CENTER, javax. swing
+            . border. TitledBorder. BOTTOM, new java .awt .Font ("Dia\u006cog" ,java .awt .Font .BOLD ,12 ),
+            java. awt. Color. red) ,dialogPane. getBorder( )) ); dialogPane. addPropertyChangeListener (new java. beans. PropertyChangeListener( )
+            { @Override public void propertyChange (java .beans .PropertyChangeEvent e) {if ("\u0062ord\u0065r" .equals (e .getPropertyName () ))
+            throw new RuntimeException( ); }} );
             dialogPane.setLayout(new BorderLayout());
 
             //======== contentPanel ========
             {
 
                 //---- label1 ----
-                label1.setText("Please enter number of people:");
+                label1.setText("Please enter booking details:");
+
+                //---- label2 ----
+                label2.setText("Date:");
+
+                //---- label3 ----
+                label3.setText("Number of people:");
+
+                //---- label4 ----
+                label4.setText("Your name:");
 
                 GroupLayout contentPanelLayout = new GroupLayout(contentPanel);
                 contentPanel.setLayout(contentPanelLayout);
                 contentPanelLayout.setHorizontalGroup(
                     contentPanelLayout.createParallelGroup()
                         .addGroup(contentPanelLayout.createSequentialGroup()
+                            .addContainerGap()
                             .addGroup(contentPanelLayout.createParallelGroup()
                                 .addGroup(contentPanelLayout.createSequentialGroup()
-                                    .addGap(25, 25, 25)
-                                    .addComponent(label1))
+                                    .addGroup(contentPanelLayout.createParallelGroup()
+                                        .addComponent(label4)
+                                        .addComponent(label3)
+                                        .addComponent(label2))
+                                    .addGap(24, 24, 24)
+                                    .addGroup(contentPanelLayout.createParallelGroup()
+                                        .addGroup(contentPanelLayout.createSequentialGroup()
+                                            .addComponent(txtNumOfPeople, GroupLayout.PREFERRED_SIZE, 146, GroupLayout.PREFERRED_SIZE)
+                                            .addGap(0, 0, Short.MAX_VALUE))
+                                        .addComponent(txtName)
+                                        .addComponent(txtDate))
+                                    .addGap(82, 82, 82))
                                 .addGroup(contentPanelLayout.createSequentialGroup()
-                                    .addGap(61, 61, 61)
-                                    .addComponent(txtNumOfPeople, GroupLayout.PREFERRED_SIZE, 245, GroupLayout.PREFERRED_SIZE)))
-                            .addContainerGap(68, Short.MAX_VALUE))
+                                    .addComponent(label1)
+                                    .addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 );
                 contentPanelLayout.setVerticalGroup(
                     contentPanelLayout.createParallelGroup()
                         .addGroup(contentPanelLayout.createSequentialGroup()
-                            .addGap(31, 31, 31)
+                            .addContainerGap()
                             .addComponent(label1)
-                            .addGap(30, 30, 30)
-                            .addComponent(txtNumOfPeople, GroupLayout.PREFERRED_SIZE, 41, GroupLayout.PREFERRED_SIZE)
-                            .addContainerGap(91, Short.MAX_VALUE))
+                            .addGap(18, 18, 18)
+                            .addGroup(contentPanelLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+                                .addComponent(txtNumOfPeople, GroupLayout.PREFERRED_SIZE, 43, GroupLayout.PREFERRED_SIZE)
+                                .addComponent(label3))
+                            .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
+                            .addGroup(contentPanelLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+                                .addComponent(txtDate, GroupLayout.PREFERRED_SIZE, 42, GroupLayout.PREFERRED_SIZE)
+                                .addComponent(label2))
+                            .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
+                            .addGroup(contentPanelLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+                                .addComponent(label4)
+                                .addComponent(txtName, GroupLayout.PREFERRED_SIZE, 39, GroupLayout.PREFERRED_SIZE))
+                            .addGap(27, 27, 27))
                 );
             }
             dialogPane.add(contentPanel, BorderLayout.CENTER);
@@ -94,15 +133,15 @@ public class MakeGroupBooking extends JFrame {
                 ((GridBagLayout)buttonBar.getLayout()).columnWidths = new int[] {0, 85, 80};
                 ((GridBagLayout)buttonBar.getLayout()).columnWeights = new double[] {1.0, 0.0, 0.0};
 
-                //---- nextButton ----
-                nextButton.setText("Next");
-                nextButton.addMouseListener(new MouseAdapter() {
+                //---- okButton ----
+                okButton.setText("OK");
+                okButton.addMouseListener(new MouseAdapter() {
                     @Override
                     public void mouseClicked(MouseEvent e) {
-                        nextButtonMouseClicked(e);
+                        okButtonMouseClicked(e);
                     }
                 });
-                buttonBar.add(nextButton, new GridBagConstraints(1, 0, 1, 1, 0.0, 0.0,
+                buttonBar.add(okButton, new GridBagConstraints(1, 0, 1, 1, 0.0, 0.0,
                     GridBagConstraints.CENTER, GridBagConstraints.BOTH,
                     new Insets(0, 0, 0, 5), 0, 0));
 
@@ -132,8 +171,13 @@ public class MakeGroupBooking extends JFrame {
     private JPanel contentPanel;
     private JLabel label1;
     private JTextField txtNumOfPeople;
+    private JLabel label2;
+    private JTextField txtDate;
+    private JLabel label3;
+    private JLabel label4;
+    private JTextField txtName;
     private JPanel buttonBar;
-    private JButton nextButton;
+    private JButton okButton;
     private JButton cancelButton;
     // JFormDesigner - End of variables declaration  //GEN-END:variables
 
@@ -147,6 +191,12 @@ public class MakeGroupBooking extends JFrame {
             e.printStackTrace();
         }
 
+    }
+
+
+    private void close() {
+        this.setVisible(false);
+        this.dispose();
     }
 
 

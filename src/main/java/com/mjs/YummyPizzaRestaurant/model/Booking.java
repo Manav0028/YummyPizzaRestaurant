@@ -75,9 +75,5 @@ public class Booking {
         this.groupBooking = groupBooking;
     }
 
-    public void groupBookingDeclined() {
-        if (this.numberOfPerson > 20 || this.numberOfPerson < 6 ) {
-            System.out.println("Group booking only accept a party size of 6 - 20, Please adjust the size.");
-        }
-    }
 }
+

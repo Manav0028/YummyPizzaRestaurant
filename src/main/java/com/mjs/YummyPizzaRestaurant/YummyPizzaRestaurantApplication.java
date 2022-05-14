@@ -1,6 +1,7 @@
 package com.mjs.YummyPizzaRestaurant;
 
 import com.mjs.YummyPizzaRestaurant.gui.PizzaMenu;
+import com.mjs.YummyPizzaRestaurant.gui.MakeGroupBooking;
 import com.mjs.YummyPizzaRestaurant.model.Customer;
 import com.mjs.YummyPizzaRestaurant.repo.BookingRepo;
 import com.mjs.YummyPizzaRestaurant.repo.CustomerRepo;
@@ -10,6 +11,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
+
+import com.mjs.YummyPizzaRestaurant.service.*;
+import com.mjs.YummyPizzaRestaurant.repo.*;
 
 import javax.swing.*;
 
@@ -25,9 +29,12 @@ public class YummyPizzaRestaurantApplication implements InitializingBean {
 	@Autowired
 	private CustomerRepo customers;
 
+	//@Autowired
+	//private BookingService bookingService ;
+
 
 	private void setupCustomers() {
-		System.out.println("Setting up customers") ;
+		//System.out.println("Setting up customers") ;
 
 		Customer customer;
 
