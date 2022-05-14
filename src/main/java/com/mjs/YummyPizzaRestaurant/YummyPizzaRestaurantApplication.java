@@ -1,6 +1,7 @@
 package com.mjs.YummyPizzaRestaurant;
 
 import com.mjs.YummyPizzaRestaurant.gui.PizzaMenu;
+import com.mjs.YummyPizzaRestaurant.model.Customer;
 import com.mjs.YummyPizzaRestaurant.repo.BookingRepo;
 import com.mjs.YummyPizzaRestaurant.repo.CustomerRepo;
 import com.mjs.YummyPizzaRestaurant.repo.MenuRepo;
@@ -19,11 +20,24 @@ public class YummyPizzaRestaurantApplication implements InitializingBean {
 	private MenuRepo menuRepo;
 
 	@Autowired
-	private BookingRepo bookingRepo;
+	private BookingRepo bookings;
 
 	@Autowired
-	private CustomerRepo customerRepo;
+	private CustomerRepo customers;
 
+
+	private void setupCustomers() {
+		System.out.println("Setting up customers") ;
+
+		Customer customer;
+
+		customer = new Customer(1234567, "Sean", "Lo", "sl@uts.com", 041234567, "230 Kingsford", true) ;
+		customers.save(customer);
+
+
+
+
+	}
 
 
 	public static void main(String[] args) {
@@ -34,6 +48,9 @@ public class YummyPizzaRestaurantApplication implements InitializingBean {
 
 	@Override
 	public void afterPropertiesSet() throws Exception {
+
+		setupCustomers();
+
 		PizzaMenu menuGui = new PizzaMenu(menuRepo);
 		menuGui.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		menuGui.pack();

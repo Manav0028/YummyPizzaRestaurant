@@ -12,7 +12,7 @@ public class Customer {
     private String firstName;
     private String lastName;
     private String email;
-    private Long phoneNumber;
+    private int phoneNumber;
     private String deliveryAddress;
     private boolean isMember;
 
@@ -21,7 +21,7 @@ public class Customer {
     }
 
     public Customer (int customerID, String firstName, String lastName,
-                     String email, Long phoneNumber, String deliveryAddress,
+                     String email, int phoneNumber, String deliveryAddress,
                      boolean isMember) {
         this.customerID = customerID;
         this.firstName = firstName;
@@ -60,10 +60,10 @@ public class Customer {
         this.email = email;
     }
 
-    public Long getPhoneNumber() {
+    public int getPhoneNumber() {
         return phoneNumber;
     }
-    public void setPhoneNumber(Long phoneNumber) {
+    public void setPhoneNumber(int phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
 

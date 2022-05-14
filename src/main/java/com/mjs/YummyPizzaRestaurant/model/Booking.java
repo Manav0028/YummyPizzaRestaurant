@@ -16,6 +16,7 @@ public class Booking {
     private int numberOfPerson;
     private Date bookingDate;
     private int customerID;
+    private String customerName;
     private boolean groupBooking;
 
     private Booking() {
@@ -23,11 +24,12 @@ public class Booking {
     }
 
     public Booking(int bookingID, Date bookingDate, int numberOfPerson,
-                   int customerID, boolean groupBooking){
+                   int customerID, String customerName, boolean groupBooking){
         this.bookingID = bookingID;
         this.bookingDate = bookingDate;
         this.numberOfPerson = numberOfPerson;
         this.customerID = customerID;
+        this.customerName = customerName;
         this.groupBooking = groupBooking;
     }
 
@@ -57,6 +59,13 @@ public class Booking {
     }
     public void setCustomerID(int customerID) {
         this.customerID = customerID;
+    }
+
+    public String getCustomerName() {
+        return customerName;
+    }
+    public void setCustomerName(String customerName) {
+        this.customerName = customerName;
     }
 
     public boolean isGroupBooking() {

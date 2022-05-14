@@ -2,6 +2,12 @@ package com.mjs.YummyPizzaRestaurant.repo;
 
 import com.mjs.YummyPizzaRestaurant.model.Booking;
 import org.springframework.data.repository.CrudRepository;
+
+import java.util.Date;
+import java.util.List;
+
 public interface BookingRepo extends CrudRepository<Booking, Integer> {
+
+    List<Booking> findByBookingDateAndCustomerNameAndNumberOfPerson(Date bookingDate, String customerName, int numberOfPerson);
 
 }
