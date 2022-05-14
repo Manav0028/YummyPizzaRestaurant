@@ -31,10 +31,26 @@ public class YummyPizzaRestaurantApplication implements InitializingBean {
 
 		Customer customer;
 
-		customer = new Customer(1234567, "Sean", "Lo", "sl@uts.com", 041234567, "230 Kingsford", true) ;
+		customer = new Customer(100, "Sean", "Lo", "sl@uts.com", 12345678, "230 Kingsford", true) ;
 		customers.save(customer);
 
+		customer = new Customer(101, "Jennifer", "Windsor", "jw@uts.com", 23456789, "222 Waterloo", true) ;
+		customers.save(customer);
 
+		customer = new Customer(102, "Manny", "Manez", "mm@uts.com", 34567890, "121 Broadway", false) ;
+		customers.save(customer);
+
+		customer = new Customer(103, "Tommy", "Sham", "ts@uts.com", 45678901, "230 Radnwick", true) ;
+		customers.save(customer);
+
+		customer = new Customer(104, "Timothy", "Gonzalez", "tg@uts.com", 56789012, "333 Kingsford", false) ;
+		customers.save(customer);
+
+		customer = new Customer(105, "Jane", "Chen", "jc@uts.com", 67890123, "126 Kingsford", true) ;
+		customers.save(customer);
+
+		customer = new Customer(106, "Yoyo", "Wing", "yw@uts.com", 78901234, "230 Radnwick", true) ;
+		customers.save(customer);
 
 
 	}
