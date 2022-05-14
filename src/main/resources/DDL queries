@@ -3,6 +3,10 @@ show databases;
 -- create database yummy_pizza_restro;
 create database yummy_pizza_restro;
 
+drop table customer_order;
+drop table order_item;
+drop database yummy_pizza_restro;
+
 use  yummy_pizza_restro;
 
 -- todo insert required tables create queries and sample insert queries
@@ -22,38 +26,231 @@ CREATE TABLE menu
     CONSTRAINT pk_menu PRIMARY KEY (product_id)
 );
 
+select * from menu;
 
-insert into menu values (1, 'p1 traditional small', 11.2, 'pizza', 232.4, 'traditional','small','tomato');
-insert into menu values (2, 'p1 traditional medium', 13.2, 'pizza', 262.4, 'traditional','medium','tomato');
-insert into menu values (3, 'p1 traditional large', 16.5, 'pizza', 332.4, 'traditional','large','tomato');
+insert into menu(product_id,
+                 product_name,
+                 product_price,
+                 product_type,
+                 calories,
+                 pizza_base,
+                 pizza_size,
+                 pizza_sauce)
+values (1, 'p1 traditional small', 11.2, 'pizza', 232.4, 'traditional', 'small', 'tomato');
+insert into menu (product_id,
+                  product_name,
+                  product_price,
+                  product_type,
+                  calories,
+                  pizza_base,
+                  pizza_size,
+                  pizza_sauce)
+values (2, 'p1 traditional medium', 13.2, 'pizza', 262.4, 'traditional', 'medium', 'tomato');
+insert into menu (product_id,
+                  product_name,
+                  product_price,
+                  product_type,
+                  calories,
+                  pizza_base,
+                  pizza_size,
+                  pizza_sauce)
+values (3, 'p1 traditional large', 16.5, 'pizza', 332.4, 'traditional', 'large', 'tomato');
 
-insert into menu values (4, 'p1 wholemeal small', 11.2, 'pizza', 232.4, 'wholemeal','small','tomato');
-insert into menu values (5, 'p1 wholemeal medium', 13.2, 'pizza', 262.4, 'wholemeal','medium','tomato');
-insert into menu values (6, 'p1 wholemeal large', 16.5, 'pizza', 332.4, 'wholemeal','large','tomato');
+insert into menu (product_id,
+                  product_name,
+                  product_price,
+                  product_type,
+                  calories,
+                  pizza_base,
+                  pizza_size,
+                  pizza_sauce)
+values (4, 'p1 wholemeal small', 11.2, 'pizza', 232.4, 'wholemeal', 'small', 'tomato');
+insert into menu (product_id,
+                  product_name,
+                  product_price,
+                  product_type,
+                  calories,
+                  pizza_base,
+                  pizza_size,
+                  pizza_sauce)
+values (5, 'p1 wholemeal medium', 13.2, 'pizza', 262.4, 'wholemeal', 'medium', 'tomato');
+insert into menu (product_id,
+                  product_name,
+                  product_price,
+                  product_type,
+                  calories,
+                  pizza_base,
+                  pizza_size,
+                  pizza_sauce)
+values (6, 'p1 wholemeal large', 16.5, 'pizza', 332.4, 'wholemeal', 'large', 'tomato');
 
-insert into menu values (7, 'p1 glutenFree small', 11.2, 'pizza', 232.4, 'glutenFree','small','tomato');
-insert into menu values (8, 'p1 glutenFree medium', 13.2, 'pizza', 262.4, 'glutenFree','medium','tomato');
-insert into menu values (9, 'p1 glutenFree large', 16.5, 'pizza', 332.4, 'glutenFree','large','tomato');
+insert into menu (product_id,
+                  product_name,
+                  product_price,
+                  product_type,
+                  calories,
+                  pizza_base,
+                  pizza_size,
+                  pizza_sauce)
+values (7, 'p1 glutenFree small', 11.2, 'pizza', 232.4, 'glutenFree', 'small', 'tomato');
+insert into menu (product_id,
+                  product_name,
+                  product_price,
+                  product_type,
+                  calories,
+                  pizza_base,
+                  pizza_size,
+                  pizza_sauce)
+values (8, 'p1 glutenFree medium', 13.2, 'pizza', 262.4, 'glutenFree', 'medium', 'tomato');
+insert into menu (product_id,
+                  product_name,
+                  product_price,
+                  product_type,
+                  calories,
+                  pizza_base,
+                  pizza_size,
+                  pizza_sauce)
+values (9, 'p1 glutenFree large', 16.5, 'pizza', 332.4, 'glutenFree', 'large', 'tomato');
 
-insert into menu values (10, 'p1 glutenFree small', 11.2, 'pizza', 232.4, 'glutenFree','small','barbeque');
-insert into menu values (11, 'p1 glutenFree medium', 13.2, 'pizza', 262.4, 'glutenFree','medium','barbeque');
-insert into menu values (12, 'p1 glutenFree large', 16.5, 'pizza', 332.4, 'glutenFree','large','barbeque');
+insert into menu (product_id,
+                  product_name,
+                  product_price,
+                  product_type,
+                  calories,
+                  pizza_base,
+                  pizza_size,
+                  pizza_sauce)
+values (10, 'p1 glutenFree small', 11.2, 'pizza', 232.4, 'glutenFree', 'small', 'barbeque');
+insert into menu (product_id,
+                  product_name,
+                  product_price,
+                  product_type,
+                  calories,
+                  pizza_base,
+                  pizza_size,
+                  pizza_sauce)
+values (11, 'p1 glutenFree medium', 13.2, 'pizza', 262.4, 'glutenFree', 'medium', 'barbeque');
+insert into menu (product_id,
+                  product_name,
+                  product_price,
+                  product_type,
+                  calories,
+                  pizza_base,
+                  pizza_size,
+                  pizza_sauce)
+values (12, 'p1 glutenFree large', 16.5, 'pizza', 332.4, 'glutenFree', 'large', 'barbeque');
 
-insert into menu values (13, 'p1 wholemeal small', 11.2, 'pizza', 232.4, 'wholemeal','small','barbeque');
-insert into menu values (14, 'p1 wholemeal medium', 13.2, 'pizza', 262.4, 'wholemeal','medium','barbeque');
-insert into menu values (15, 'p1 wholemeal large', 16.5, 'pizza', 332.4, 'wholemeal','large','barbeque');
+insert into menu (product_id,
+                  product_name,
+                  product_price,
+                  product_type,
+                  calories,
+                  pizza_base,
+                  pizza_size,
+                  pizza_sauce)
+values (13, 'p1 wholemeal small', 11.2, 'pizza', 232.4, 'wholemeal', 'small', 'barbeque');
+insert into menu (product_id,
+                  product_name,
+                  product_price,
+                  product_type,
+                  calories,
+                  pizza_base,
+                  pizza_size,
+                  pizza_sauce)
+values (14, 'p1 wholemeal medium', 13.2, 'pizza', 262.4, 'wholemeal', 'medium', 'barbeque');
+insert into menu (product_id,
+                  product_name,
+                  product_price,
+                  product_type,
+                  calories,
+                  pizza_base,
+                  pizza_size,
+                  pizza_sauce)
+values (15, 'p1 wholemeal large', 16.5, 'pizza', 332.4, 'wholemeal', 'large', 'barbeque');
 
-insert into menu values (16, 'p1 wholemeal small', 11.2, 'pizza', 232.4, 'wholemeal','small','tomato');
-insert into menu values (17, 'p1 wholemeal medium', 13.2, 'pizza', 262.4, 'wholemeal','medium','tomato');
-insert into menu values (18, 'p1 wholemeal large', 16.5, 'pizza', 332.4, 'wholemeal','large','tomato');
+insert into menu (product_id,
+                  product_name,
+                  product_price,
+                  product_type,
+                  calories,
+                  pizza_base,
+                  pizza_size,
+                  pizza_sauce)
+values (16, 'p1 wholemeal small', 11.2, 'pizza', 232.4, 'wholemeal', 'small', 'tomato');
+insert into menu (product_id,
+                  product_name,
+                  product_price,
+                  product_type,
+                  calories,
+                  pizza_base,
+                  pizza_size,
+                  pizza_sauce)
+values (17, 'p1 wholemeal medium', 13.2, 'pizza', 262.4, 'wholemeal', 'medium', 'tomato');
+insert into menu (product_id,
+                  product_name,
+                  product_price,
+                  product_type,
+                  calories,
+                  pizza_base,
+                  pizza_size,
+                  pizza_sauce)
+values (18, 'p1 wholemeal large', 16.5, 'pizza', 332.4, 'wholemeal', 'large', 'tomato');
 
-insert into menu values (19, 'p1 traditional small', 11.2, 'pizza', 232.4, 'traditional','small','tomato');
-insert into menu values (20, 'p1 traditional medium', 13.2, 'pizza', 262.4, 'traditional','medium','tomato');
-insert into menu values (21, 'p1 traditional large', 16.5, 'pizza', 332.4, 'traditional','large','tomato');
+insert into menu (product_id,
+                  product_name,
+                  product_price,
+                  product_type,
+                  calories,
+                  pizza_base,
+                  pizza_size,
+                  pizza_sauce)
+values (19, 'p1 traditional small', 11.2, 'pizza', 232.4, 'traditional', 'small', 'tomato');
+insert into menu (product_id,
+                  product_name,
+                  product_price,
+                  product_type,
+                  calories,
+                  pizza_base,
+                  pizza_size,
+                  pizza_sauce)
+values (20, 'p1 traditional medium', 13.2, 'pizza', 262.4, 'traditional', 'medium', 'tomato');
+insert into menu (product_id,
+                  product_name,
+                  product_price,
+                  product_type,
+                  calories,
+                  pizza_base,
+                  pizza_size,
+                  pizza_sauce)
+values (21, 'p1 traditional large', 16.5, 'pizza', 332.4, 'traditional', 'large', 'tomato');
 
-insert into menu values (22, 'p1 traditional small', 11.2, 'pizza', 232.4, 'traditional','small','barbeque');
-insert into menu values (23, 'p1 traditional medium', 13.2, 'pizza', 262.4, 'traditional','medium','barbeque');
-insert into menu values (24, 'p1 traditional large', 16.5, 'pizza', 332.4, 'traditional','large','barbeque');
+insert into menu (product_id,
+                  product_name,
+                  product_price,
+                  product_type,
+                  calories,
+                  pizza_base,
+                  pizza_size,
+                  pizza_sauce)
+values (22, 'p1 traditional small', 11.2, 'pizza', 232.4, 'traditional', 'small', 'barbeque');
+insert into menu (product_id,
+                  product_name,
+                  product_price,
+                  product_type,
+                  calories,
+                  pizza_base,
+                  pizza_size,
+                  pizza_sauce)
+values (23, 'p1 traditional medium', 13.2, 'pizza', 262.4, 'traditional', 'medium', 'barbeque');
+insert into menu (product_id,
+                  product_name,
+                  product_price,
+                  product_type,
+                  calories,
+                  pizza_base,
+                  pizza_size,
+                  pizza_sauce)
+values (24, 'p1 traditional large', 16.5, 'pizza', 332.4, 'traditional', 'large', 'barbeque');
 
 CREATE TABLE topping
 (
@@ -73,50 +270,48 @@ e.	veggie lovers’ pizza
     i.	garden goodness
     ii.	vegan cheese
  */
+drop table topping;
 
-insert into topping values(1, 'supreme sizzle',null, 1);
-insert into topping values(2, 'Hawaiian',null, 2);
-insert into topping values(3, 'sweet chilli chicken','chicken', 2);
-insert into topping values(4, 'peri-peri chicken','chicken', 1);
-insert into topping values(5, 'garden goodness','veggie', 1);
-insert into topping values(6, 'vegan cheese','veggie', 1);
+insert into topping (topping_name, topping_type, product_id ) values('supreme sizzle',null, 1);
+insert into topping (topping_name, topping_type, product_id ) values('Hawaiian',null, 2);
+insert into topping (topping_name, topping_type, product_id ) values('sweet chilli chicken','chicken', 2);
+insert into topping (topping_name, topping_type, product_id ) values('peri-peri chicken','chicken', 1);
+insert into topping (topping_name, topping_type, product_id ) values('garden goodness','veggie', 1);
+insert into topping (topping_name, topping_type, product_id ) values('vegan cheese','veggie', 1);
 
-insert into topping values(7, 'supreme sizzle',null, 3);
-insert into topping values(8, 'Hawaiian',null, 3);
-insert into topping values(9, 'sweet chilli chicken','chicken', 4);
-insert into topping values(10, 'peri-peri chicken','chicken', 4);
-insert into topping values(11, 'garden goodness','veggie', 4);
-insert into topping values(12, 'vegan cheese','veggie', 4);
+insert into topping (topping_name, topping_type, product_id ) values('supreme sizzle',null, 3);
+insert into topping (topping_name, topping_type, product_id ) values('Hawaiian',null, 3);
+insert into topping (topping_name, topping_type, product_id ) values('sweet chilli chicken','chicken', 4);
+insert into topping (topping_name, topping_type, product_id ) values('peri-peri chicken','chicken', 4);
+insert into topping (topping_name, topping_type, product_id ) values('garden goodness','veggie', 4);
+insert into topping (topping_name, topping_type, product_id ) values('vegan cheese','veggie', 4);
 
 select * from menu m, topping t where m.product_id = t.product_id;
 
-CREATE TABLE customer_order
+create table customer_order
 (
-    order_id               INT          NOT NULL,
-    customer_id            INT          NULL,
-    order_type             VARCHAR(255) NULL,
-    order_date             datetime     NULL,
-    total_amount           DOUBLE       NULL,
-    eating_option          VARCHAR(255) NULL,
-    discount_type          VARCHAR(255) NULL,
-    order_id_order_item_id INT          NOT NULL,
-    CONSTRAINT pk_customerorder PRIMARY KEY (order_id)
-);
+    order_id      integer          not null auto_increment,
+    customer_id   integer,
+    discount_type varchar(255),
+    eating_option varchar(255),
+    order_date    datetime(6),
+    order_type    varchar(255),
+    total_amount  double precision not null,
+    primary key (order_id)
+) engine = InnoDB;
 
-CREATE TABLE order_item
+create table order_item
 (
-    order_item_id  INT    NOT NULL,
-    order_id       INT    NULL,
-    product_id     INT    NULL,
-    order_quantity INT    NULL,
-    order_price    DOUBLE NULL,
-    CONSTRAINT pk_orderitem PRIMARY KEY (order_item_id)
-);
+    order_item_id           integer          not null auto_increment,
+    order_price             double precision not null,
+    order_quantity          integer,
+    product_id              integer,
+    customer_order_order_id integer,
+    primary key (order_item_id)
+) engine = InnoDB;
 
-ALTER TABLE customer_order
-    ADD CONSTRAINT FK_CUSTOMERORDER_ON_ORDERID_ORDERITEMID
-        FOREIGN KEY (order_id_order_item_id)
-            REFERENCES order_item (order_item_id);
+alter table order_item
+    add constraint FK3sgw59nat83ejdkg9c6dvr9tb foreign key (customer_order_order_id) references customer_order (order_id);
 
 CREATE TABLE payment
 (
@@ -139,18 +334,72 @@ CREATE TABLE customer
     CONSTRAINT pk_customer PRIMARY KEY (customer_id)
 );
 
-insert into customer
-values (1, 'Manav', 'Sharma', 'manav.s@gamil.com', 9879853346,
+SHOW CREATE TABLE customer;
+
+CREATE TABLE `customer` (
+                            `customer_id` int NOT NULL,
+                            `delivery_address` varchar(255) DEFAULT NULL,
+                            `email` varchar(255) DEFAULT NULL,
+                            `first_name` varchar(255) DEFAULT NULL,
+                            `is_member` bit(1) NOT NULL,
+                            `last_name` varchar(255) DEFAULT NULL,
+                            `phone` bigint NOT NULL,
+                            PRIMARY KEY (`customer_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+CREATE TABLE `customer` (
+                            `customer_id` int NOT NULL AUTO_INCREMENT,
+                            `delivery_address` varchar(255) DEFAULT NULL,
+                            `email` varchar(255) DEFAULT NULL,
+                            `first_name` varchar(255) DEFAULT NULL,
+                            `is_member` bit(1) NOT NULL,
+                            `last_name` varchar(255) DEFAULT NULL,
+                            `phone` bigint NOT NULL,
+                            PRIMARY KEY (`customer_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+drop table customer;
+
+insert into customer (first_name       ,
+                      last_name        ,
+                      email            ,
+                      phone            ,
+                      delivery_address,
+                      is_member)
+values ('Manav', 'Sharma', 'manav.s@gamil.com', 9879853346,
         '1 Brown St, Ashfield, 2131, NSW', 1);
 
-insert into customer
-values (2, 'Syafa', 'Sofiena', 'syafa.s@gamil.com', 9234563346,
+insert into customer (first_name       ,
+                      last_name        ,
+                      email            ,
+                      phone            ,
+                      delivery_address,
+                      is_member)
+values ('Syafa', 'Sofiena', 'syafa.s@gamil.com', 9234563346,
         '11 Brown St, Ashfield, 2131, NSW', 0);
 
-insert into customer
-values (3, 'Jen', 'Wei', 'Jen.w@gamil.com', 9897969542,
+insert into customer (first_name       ,
+                      last_name        ,
+                      email            ,
+                      phone            ,
+                      delivery_address,
+                      is_member)
+values ('Jen', 'Wei', 'Jen.w@gamil.com', 9897969542,
         '11 Kings St, Broadway, 2231, NSW', 0);
 
 select * from customer;
 
 # drop database yummy_pizza_restro;
+
+select customeror0_.order_id as order_id1_1_, customeror0_.customer_id as customer2_1_,
+       customeror0_.discount_type as discount3_1_, customeror0_.eating_option as eating_o4_1_, customeror0_.order_date as order_da5_1_, customeror0_.order_type as order_ty6_1_, customeror0_.total_amount as total_am7_1_ from customer_order customeror0_;
+
+select orderitems0_.customer_order_order_id as customer5_5_0_, orderitems0_.order_item_id as order_it1_5_0_, orderitems0_.order_item_id as order_it1_5_1_, orderitems0_.customer_order_order_id as customer5_5_1_, orderitems0_.order_price as order_pr2_5_1_, orderitems0_.order_quantity as order_qu3_5_1_, orderitems0_.product_id as product_4_5_1_ from order_item orderitems0_ where orderitems0_.customer_order_order_id=?;
+
+
+select * from order_item;
+select * from customer_order;
+
+delete from customer_order;
+
+delete from order_item;
