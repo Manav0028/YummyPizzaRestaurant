@@ -1,86 +1,66 @@
 package com.mjs.YummyPizzaRestaurant.model;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
 public class Customer {
 
     @Id
-    private int customerID;
-
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int customerId;
     private String firstName;
     private String lastName;
     private String email;
-    private int phoneNumber;
+    private long phone;
     private String deliveryAddress;
     private boolean isMember;
 
-    private Customer() {
+    public Customer() {
 
     }
 
-    public Customer (int customerID, String firstName, String lastName,
-                     String email, int phoneNumber, String deliveryAddress,
-                     boolean isMember) {
-        this.customerID = customerID;
+    public Customer(int customerId, String firstName, String lastName, String email, long phone, String deliveryAddress) {
+        this.customerId = customerId;
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
-        this.phoneNumber = phoneNumber;
+        this.phone = phone;
         this.deliveryAddress = deliveryAddress;
-        this.isMember = isMember;
     }
 
-    public int getCustomerID() {
-        return customerID;
-    }
-    public void setCustomerID(int customerID) {
-        this.customerID = customerID;
+    public int getCustomerId() {
+        return customerId;
     }
 
     public String getFirstName() {
         return firstName;
     }
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
 
     public String getLastName() {
         return lastName;
-    }
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
     }
 
     public String getEmail() {
         return email;
     }
-    public void setEmail(String email) {
-        this.email = email;
-    }
 
-    public int getPhoneNumber() {
-        return phoneNumber;
-    }
-    public void setPhoneNumber(int phoneNumber) {
-        this.phoneNumber = phoneNumber;
+    public long getPhone() {
+        return phone;
     }
 
     public String getDeliveryAddress() {
         return deliveryAddress;
     }
-    public void setDeliveryAddress(String deliveryAddress) {
-        this.deliveryAddress = deliveryAddress;
-    }
 
     public boolean isMember() {
         return isMember;
     }
+
     public void setMember(boolean member) {
         isMember = member;
     }
-
-    public String toString() {return customerID + ": " + lastName + ", " + firstName;}
 
 }
