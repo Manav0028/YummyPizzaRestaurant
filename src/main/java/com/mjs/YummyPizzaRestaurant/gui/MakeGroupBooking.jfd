@@ -74,7 +74,7 @@ new FormModel {
 				"value": "Center"
 			} )
 		}, new FormLayoutConstraints( null ) {
-			"location": new java.awt.Point( 110, 25 )
+			"location": new java.awt.Point( 100, 10 )
 			"size": new java.awt.Dimension( 400, 300 )
 		} )
 	}
