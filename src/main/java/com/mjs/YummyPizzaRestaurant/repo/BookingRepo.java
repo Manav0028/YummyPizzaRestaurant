@@ -8,6 +8,6 @@ import java.util.List;
 
 public interface BookingRepo extends CrudRepository<Booking, Integer> {
 
-    List<Booking> findByBookingDateAndCustomerNameAndNumberOfPerson(Date bookingDate, String customerName, int numberOfPerson);
+    //List<Booking> findByBookingDateAndCustomerNameAndNumberOfPerson(Date bookingDate, String customerName, int numberOfPerson);
 
 }

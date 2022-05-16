@@ -20,6 +20,7 @@ new FormModel {
 					} )
 					add( new FormComponent( "javax.swing.JTextField" ) {
 						name: "txtNumOfPeople"
+						addEvent( new FormEvent( "java.awt.event.KeyListener", "keyPressed", "txtNumOfPeopleKeyPressed", true ) )
 					} )
 					add( new FormComponent( "javax.swing.JLabel" ) {
 						name: "label2"
@@ -27,6 +28,7 @@ new FormModel {
 					} )
 					add( new FormComponent( "javax.swing.JTextField" ) {
 						name: "txtDate"
+						addEvent( new FormEvent( "java.awt.event.KeyListener", "keyPressed", "txtDateKeyPressed", true ) )
 					} )
 					add( new FormComponent( "javax.swing.JLabel" ) {
 						name: "label3"
@@ -38,6 +40,7 @@ new FormModel {
 					} )
 					add( new FormComponent( "javax.swing.JTextField" ) {
 						name: "txtName"
+						addEvent( new FormEvent( "java.awt.event.KeyListener", "keyPressed", "txtNameKeyPressed", true ) )
 					} )
 				}, new FormLayoutConstraints( class java.lang.String ) {
 					"value": "Center"

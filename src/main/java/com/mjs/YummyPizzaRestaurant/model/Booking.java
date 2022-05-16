@@ -14,16 +14,16 @@ public class Booking {
     private int bookingID;
 
     private int numberOfPerson;
-    private Date bookingDate;
+    private int bookingDate;
     private int customerID;
     private String customerName;
     private boolean groupBooking;
 
-    private Booking() {
+    public Booking() {
 
     }
 
-    public Booking(int bookingID, Date bookingDate, int numberOfPerson,
+    public Booking(int bookingID, int bookingDate, int numberOfPerson,
                    int customerID, String customerName, boolean groupBooking){
         this.bookingID = bookingID;
         this.bookingDate = bookingDate;
@@ -40,10 +40,10 @@ public class Booking {
         this.bookingID = bookingID;
     }
 
-    public Date getBookingDate() {
+    public int getBookingDate() {
         return bookingDate;
     }
-    public void setBookingDate(Date bookingDate) {
+    public void setBookingDate(int bookingDate) {
         this.bookingDate = bookingDate;
     }
 

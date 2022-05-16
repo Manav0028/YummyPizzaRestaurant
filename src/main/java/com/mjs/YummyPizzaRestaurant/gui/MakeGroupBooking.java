@@ -11,6 +11,7 @@ import javax.swing.GroupLayout;
 import javax.swing.border.*;
 
 import com.mjs.YummyPizzaRestaurant.model.Booking;
+import com.mjs.YummyPizzaRestaurant.repo.BookingRepo;
 
 
 public class MakeGroupBooking extends JFrame {
@@ -19,22 +20,29 @@ public class MakeGroupBooking extends JFrame {
     }
 
     private Booking booking;
+    private BookingRepo bookingRepo;
 
     private void cancelButtonMouseClicked(MouseEvent e) {
         close();
     }
 
     private void okButtonMouseClicked(MouseEvent e) {
-        //if (txtNumOfPeople.getText().)
 
-
-        JOptionPane.showMessageDialog(null, "Your group booking is confirmed.");
+        checkNumOfPeople();
+        
+    }
+    
+    private void txtNumOfPeopleKeyPressed(KeyEvent e) {
+        okButton.setEnabled(inputComplete());
     }
 
-    private void nextButtonMouseClicked(MouseEvent e) {
-        // TODO add your code here
+    private void txtDateKeyPressed(KeyEvent e) {
+        okButton.setEnabled(inputComplete());
     }
-
+    
+    private void txtNameKeyPressed(KeyEvent e) {
+        okButton.setEnabled(inputComplete());
+    }
 
 
     private void initComponents() {
@@ -61,13 +69,13 @@ public class MakeGroupBooking extends JFrame {
         //======== dialogPane ========
         {
             dialogPane.setBorder(new EmptyBorder(12, 12, 12, 12));
-            dialogPane.setBorder ( new javax . swing. border .CompoundBorder ( new javax . swing. border .TitledBorder ( new javax
-            . swing. border .EmptyBorder ( 0, 0 ,0 , 0) ,  "JF\u006frmD\u0065sig\u006eer \u0045val\u0075ati\u006fn" , javax. swing
-            .border . TitledBorder. CENTER ,javax . swing. border .TitledBorder . BOTTOM, new java. awt .
-            Font ( "Dia\u006cog", java .awt . Font. BOLD ,12 ) ,java . awt. Color .red
-            ) ,dialogPane. getBorder () ) ); dialogPane. addPropertyChangeListener( new java. beans .PropertyChangeListener ( ){ @Override
-            public void propertyChange (java . beans. PropertyChangeEvent e) { if( "\u0062ord\u0065r" .equals ( e. getPropertyName (
-            ) ) )throw new RuntimeException( ) ;} } );
+            dialogPane.setBorder(new javax.swing.border.CompoundBorder(new javax.swing.border.TitledBorder(new
+            javax.swing.border.EmptyBorder(0,0,0,0), "JF\u006frmDes\u0069gner \u0045valua\u0074ion",javax
+            .swing.border.TitledBorder.CENTER,javax.swing.border.TitledBorder.BOTTOM,new java
+            .awt.Font("D\u0069alog",java.awt.Font.BOLD,12),java.awt
+            .Color.red),dialogPane. getBorder()));dialogPane. addPropertyChangeListener(new java.beans.
+            PropertyChangeListener(){@Override public void propertyChange(java.beans.PropertyChangeEvent e){if("\u0062order".
+            equals(e.getPropertyName()))throw new RuntimeException();}});
             dialogPane.setLayout(new BorderLayout());
 
             //======== contentPanel ========
@@ -76,14 +84,38 @@ public class MakeGroupBooking extends JFrame {
                 //---- label1 ----
                 label1.setText("Please enter booking details:");
 
+                //---- txtNumOfPeople ----
+                txtNumOfPeople.addKeyListener(new KeyAdapter() {
+                    @Override
+                    public void keyPressed(KeyEvent e) {
+                        txtNumOfPeopleKeyPressed(e);
+                    }
+                });
+
                 //---- label2 ----
                 label2.setText("Date:");
+
+                //---- txtDate ----
+                txtDate.addKeyListener(new KeyAdapter() {
+                    @Override
+                    public void keyPressed(KeyEvent e) {
+                        txtDateKeyPressed(e);
+                    }
+                });
 
                 //---- label3 ----
                 label3.setText("Number of people:");
 
                 //---- label4 ----
                 label4.setText("Your name:");
+
+                //---- txtName ----
+                txtName.addKeyListener(new KeyAdapter() {
+                    @Override
+                    public void keyPressed(KeyEvent e) {
+                        txtNameKeyPressed(e);
+                    }
+                });
 
                 GroupLayout contentPanelLayout = new GroupLayout(contentPanel);
                 contentPanel.setLayout(contentPanelLayout);
@@ -143,7 +175,6 @@ public class MakeGroupBooking extends JFrame {
                 okButton.addMouseListener(new MouseAdapter() {
                     @Override
                     public void mouseClicked(MouseEvent e) {
-                        nextButtonMouseClicked(e);
                         okButtonMouseClicked(e);
                     }
                 });
@@ -196,14 +227,43 @@ public class MakeGroupBooking extends JFrame {
         } catch (Exception e) {
             e.printStackTrace();
         }
-
     }
-
 
     private void close() {
         this.setVisible(false);
         this.dispose();
     }
 
+    private void checkNumOfPeople() {
+        int ValueNumOfPeople = Integer.parseInt(txtNumOfPeople.getText());
+        if (ValueNumOfPeople > 20 || ValueNumOfPeople < 6) {
+            JOptionPane.showMessageDialog(null, "Sorry, group booking only accepts a party size of 6-20. Please adjust the number of people.");
+        } else {
+            JOptionPane.showMessageDialog(null, "Your group booking is confirmed.");
+        }
+    }
 
+    
+    private boolean inputComplete() {
+
+        if (txtNumOfPeople.getText().isEmpty())
+            return false;
+
+        if (txtDate.getText().isEmpty())
+            return false ;
+
+        if (txtName.getText().isEmpty())
+            return false ;
+
+        return true ;
+    }
+    
+//    private void createBooking() {
+////        //this.booking = new Booking(
+////                txtNumOfPeople.getText(), txtDate.getText(), txtName.getText()
+////        );
+//
+//    }
+
+    
 }
