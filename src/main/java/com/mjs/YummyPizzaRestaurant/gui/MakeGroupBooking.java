@@ -240,6 +240,8 @@ public class MakeGroupBooking extends JFrame {
             JOptionPane.showMessageDialog(null, "Sorry, group booking only accepts a party size of 6-20. Please adjust the number of people.");
         } else {
             JOptionPane.showMessageDialog(null, "Your group booking is confirmed.");
+            //booking.setNumberOfPerson(ValueNumOfPeople);
+            //bookingRepo.save(booking);
         }
     }
 
@@ -257,13 +259,5 @@ public class MakeGroupBooking extends JFrame {
 
         return true ;
     }
-    
-//    private void createBooking() {
-////        //this.booking = new Booking(
-////                txtNumOfPeople.getText(), txtDate.getText(), txtName.getText()
-////        );
-//
-//    }
 
-    
 }

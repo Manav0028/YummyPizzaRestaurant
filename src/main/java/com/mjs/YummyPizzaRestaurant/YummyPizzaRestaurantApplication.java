@@ -15,6 +15,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
+import java.util.Date;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
@@ -42,19 +43,20 @@ public class YummyPizzaRestaurantApplication  implements InitializingBean {
 	private void setupBooking() {
 		Booking booking;
 
-		booking = new Booking(1234567, 0620, 13, 123, "Jennifer Chan", true);
+		booking = new Booking(20200825, 13, 123, "Jennifer Chan", true);
+		booking = new Booking(20201225, 10, 121, "Mark Wingman", true);
+
 		bookingRepo.save(booking);
 
-	}
 
+	}
 
 	private void setupCustomer() {
 		Customer customer;
 
-		customer = new Customer(1234567, "Tim", "Lo", "TL@uts.com", 1456789, "Kingsford 233");
+		customer = new Customer(101, "Jack", "Swing", "JL@uts.com", 0411122234, "Anzac Parade 320");
+
 		customerRepo.save(customer);
-
-
 
 	}
 
@@ -67,8 +69,8 @@ public class YummyPizzaRestaurantApplication  implements InitializingBean {
 	@Override
 	public void afterPropertiesSet() throws Exception {
 
-		setupBooking();
 		setupCustomer();
+		setupBooking();
 
 		new HomeUI(menuRepo, toppingRepo, orderRepo);
 

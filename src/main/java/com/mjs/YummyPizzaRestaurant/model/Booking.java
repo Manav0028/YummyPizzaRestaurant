@@ -4,7 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import java.util.Date;
+
 
 @Entity
 public class Booking {
@@ -23,9 +23,8 @@ public class Booking {
 
     }
 
-    public Booking(int bookingID, int bookingDate, int numberOfPerson,
+    public Booking(int bookingDate, int numberOfPerson,
                    int customerID, String customerName, boolean groupBooking){
-        this.bookingID = bookingID;
         this.bookingDate = bookingDate;
         this.numberOfPerson = numberOfPerson;
         this.customerID = customerID;
