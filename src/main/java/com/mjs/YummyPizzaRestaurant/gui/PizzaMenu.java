@@ -45,20 +45,6 @@ public class PizzaMenu extends JFrame{
         frame.pack();
         frame.setVisible(true);
 
-//        pMenu.createUIComponents();
-//        JScrollPane scrollPane = new JScrollPane(table);
-
-    }
-
-
-    private String convertObjectToString(Menu m) {
-        String rowData = "{" + m.getProductId() + ", \""
-                + m.getProductName() + "\", " + m.getProductPrice() + ", \""
-                + m.getProductType()+ "\", " + m.getCalories() + ", \""
-                + m.getPizzaBase() + "\", \""
-                + m.getPizzaSize() + "\", \"" + m.getPizzaSauce() + "\" }";
-        System.out.println(rowData);
-        return rowData;
     }
 
     public PizzaMenu(MenuRepo menuRepo, ToppingRepo toppingRepo, OrderRepo orderRepo) {
@@ -183,8 +169,8 @@ public class PizzaMenu extends JFrame{
 
     private class MenuTableModel extends AbstractTableModel {
 
-        private String[] columnNames = {"id", "Name", "productPrice",
-                "productType", "calories", "pizzaBase", "pizzaSize", "pizzaSauce"};
+        private String[] columnNames = {"Number", "Name", "Price",
+                "Type", "Calories", "Base", "Size", "Sauce"};
 
         private List<Menu> rows ;
 
