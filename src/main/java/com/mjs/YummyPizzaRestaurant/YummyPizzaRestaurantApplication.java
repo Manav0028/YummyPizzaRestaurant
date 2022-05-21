@@ -1,26 +1,13 @@
 package com.mjs.YummyPizzaRestaurant;
 
 import com.mjs.YummyPizzaRestaurant.gui.HomeUI;
-import com.mjs.YummyPizzaRestaurant.gui.PizzaMenu;
-import com.mjs.YummyPizzaRestaurant.gui.MakeGroupBooking;
 import com.mjs.YummyPizzaRestaurant.model.Booking;
 import com.mjs.YummyPizzaRestaurant.model.Customer;
-import com.mjs.YummyPizzaRestaurant.model.CustomerOrder;
-import com.mjs.YummyPizzaRestaurant.model.Topping;
 import com.mjs.YummyPizzaRestaurant.repo.*;
-import com.mjs.YummyPizzaRestaurant.service.BookingService;
-import org.hibernate.hql.internal.ast.tree.SearchedCaseNode;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
-import java.util.Date;
-
-import javax.swing.*;
-import javax.swing.border.EmptyBorder;
-import java.util.Iterator;
-import java.util.List;
 
 @SpringBootApplication
 public class YummyPizzaRestaurantApplication  implements InitializingBean {
