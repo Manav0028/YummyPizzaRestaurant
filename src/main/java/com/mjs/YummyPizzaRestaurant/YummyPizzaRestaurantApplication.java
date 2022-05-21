@@ -27,6 +27,7 @@ public class YummyPizzaRestaurantApplication  implements InitializingBean {
 	@Autowired
 	private BookingRepo bookingRepo;
 
+	//Jen-Wei Lo 14347367
 	private void setupBooking() {
 		Booking booking;
 
@@ -37,7 +38,7 @@ public class YummyPizzaRestaurantApplication  implements InitializingBean {
 
 
 	}
-
+	//Jen-Wei Lo 14347367
 	private void setupCustomer() {
 		Customer customer;
 

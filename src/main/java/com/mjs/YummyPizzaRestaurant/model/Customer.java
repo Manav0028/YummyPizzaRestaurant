@@ -1,3 +1,5 @@
+//Jen-Wei Lo 14347367
+
 package com.mjs.YummyPizzaRestaurant.model;
 
 import javax.persistence.Entity;
