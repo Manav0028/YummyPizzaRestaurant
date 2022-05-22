@@ -1,11 +1,15 @@
 package com.mjs.YummyPizzaRestaurant.gui;
 
+import com.mjs.YummyPizzaRestaurant.model.JobApplication;
+
 import javax.swing.*;
-import java.awt.event.*;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class ApplyJob extends JDialog {
     private JPanel contentPane;
-    private JLabel lblInstructions;
+    public JobApplication application;
+
     private JTextField txtFirstName;
     private JTextField txtLastName;
     private JTextField txtEmail;
@@ -16,70 +20,79 @@ public class ApplyJob extends JDialog {
     private JLabel lblPhoneNumber;
     private JButton btnApply;
     private JButton btnCancel;
-
-    /**
-     * Launch the application.
-     */
-    public static void main(String[] args) {
-        try {
-            ApplyJob dialog = new ApplyJob();
-            dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
-            dialog.setVisible(true);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
+    private JLabel lblVacancyId;
+    private JTextField txtVacancyId;
 
     /**
      * Create the dialog.
      */
-    public ApplyJob() {
-        setContentPane(contentPane);
-        setVisible(true);
+    public ApplyJob(JobApplication application) {
 
-        btnApply.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                onOK();
+        this.setContentPane(contentPane);
+        this.application = application;
+
+        this.setModal(true);
+        setTitle("Apply Job");
+        setBounds(100, 100, 450, 300);
+
+        btnCancel.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                close();
             }
         });
-
-        btnCancel.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                onCancel();
+        btnApply.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                applyForJob();
             }
         });
-
-        // call onCancel() when cross is clicked
-        setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
-        addWindowListener(new WindowAdapter() {
-            public void windowClosing(WindowEvent e) {
-                onCancel();
-            }
-        });
-
-        // call onCancel() on ESCAPE
-        contentPane.registerKeyboardAction(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                onCancel();
-            }
-        }, KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0), JComponent.WHEN_ANCESTOR_OF_FOCUSED_COMPONENT);
     }
 
-    private void onOK() {
+    private void applyForJob() {
+        String vacancyId = txtVacancyId.getText();
         String firstName = txtFirstName.getText();
         String lastName = txtLastName.getText();
-        dispose();
+        String email = txtEmail.getText();
+        String phoneNumber = txtPhoneNumber.getText();
+
+        if (vacancyId.isEmpty() || firstName.isEmpty() || lastName.isEmpty() || email.isEmpty() || phoneNumber.isEmpty()) {
+            JOptionPane.showMessageDialog(this,
+                    "Please enter all fields",
+                    "Try Again",
+                    JOptionPane.ERROR_MESSAGE);
+            return;
+        }
     }
 
-    private void onCancel() {
-        // add your code here if necessary
-        dispose();
+    private boolean inputComplete() {
+
+        if (txtVacancyId.getText().isEmpty() || !txtVacancyId.isValid())
+            return false;
+
+        if (txtFirstName.getText().isEmpty())
+            return false;
+
+        if (txtLastName.getText().isEmpty())
+            return false;
+
+        if (txtEmail.getText().isEmpty())
+            return false;
+
+        if (txtPhoneNumber.getText().isEmpty())
+            return false;
+
+        return true;
     }
 
-    //
-    private void createUIComponents() {
-        // TODO: place custom component creation code here
+    public JobApplication showDialog() {
+        setVisible(true);
+        return application;
     }
 
+    private void close() {
+        this.setVisible(false);
+        this.dispose();
+    }
 
 }

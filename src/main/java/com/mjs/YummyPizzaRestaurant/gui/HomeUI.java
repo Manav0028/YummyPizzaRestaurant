@@ -1,5 +1,6 @@
 package com.mjs.YummyPizzaRestaurant.gui;
 
+import com.mjs.YummyPizzaRestaurant.repo.JobVacancyRepo;
 import com.mjs.YummyPizzaRestaurant.repo.MenuRepo;
 import com.mjs.YummyPizzaRestaurant.repo.OrderRepo;
 import com.mjs.YummyPizzaRestaurant.repo.ToppingRepo;
@@ -19,7 +20,7 @@ public class HomeUI extends JFrame{
     private JPanel allOrderPanel;
     private JPanel jobsPanel;
 
-    public HomeUI(MenuRepo menuRepo, ToppingRepo toppingRepo, OrderRepo orderRepo) {
+    public HomeUI(MenuRepo menuRepo, ToppingRepo toppingRepo, OrderRepo orderRepo, JobVacancyRepo jobVacancyRepo) {
 
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setBounds(100, 100, 150, 100); //frame bounds
@@ -51,10 +52,10 @@ public class HomeUI extends JFrame{
             @Override
             public void mouseClicked(MouseEvent e) {
                 super.mouseClicked(e);
-//                PizzaMenu menuGui = new PizzaMenu(menuRepo, toppingRepo);
-//                menuGui.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-//                menuGui.pack();
-//                menuGui.setVisible(true);
+                ViewVacancies vacancyGui = new ViewVacancies(jobVacancyRepo);
+                vacancyGui.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+                vacancyGui.pack();
+                vacancyGui.setVisible(true);
             }
         });
     }

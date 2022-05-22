@@ -1,7 +1,6 @@
 package com.mjs.YummyPizzaRestaurant.model;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 import java.util.Date;
 
@@ -9,11 +8,16 @@ import java.util.Date;
 public class JobVacancy {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id ;
 
+    @Column
     private String positionName ;
+    @Column
     private String jobDescription ;
+    @Column
     private Integer numberOfPositions ;
+    @Column
     private Date lastDateToApply ;
 
     public JobVacancy() {
@@ -31,19 +35,39 @@ public class JobVacancy {
         return id;
     }
 
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
     public String getPositionName() {
         return positionName;
+    }
+
+    public void setPositionName(String positionName) {
+        this.positionName = positionName;
     }
 
     public String getJobDescription() {
         return jobDescription;
     }
 
+    public void setJobDescription(String jobDescription) {
+        this.jobDescription = jobDescription;
+    }
+
     public Integer getNumberOfPositions() {
         return numberOfPositions;
     }
 
+    public void setNumberOfPositions(Integer numberOfPositions) {
+        this.numberOfPositions = numberOfPositions;
+    }
+
     public Date getLastDateToApply() {
         return lastDateToApply;
+    }
+
+    public void setLastDateToApply(Date lastDateToApply) {
+        this.lastDateToApply = lastDateToApply;
     }
 }
