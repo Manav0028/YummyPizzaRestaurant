@@ -404,4 +404,5 @@ delete from customer_order;
 
 delete from order_item;
 
-drop table customer;
+drop table job_application;
+drop table job_vacancy;
