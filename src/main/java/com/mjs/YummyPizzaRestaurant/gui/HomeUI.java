@@ -12,12 +12,12 @@ import java.awt.event.MouseEvent;
 public class HomeUI extends JFrame{
     private JButton menuButton;
     private JButton allOrdersButton;
-    private JButton vacancyButton;
+    private JButton makeGroupButton;
     private JLabel titleLabel;
     private JPanel rootPanel;
     private JPanel menuPanel;
     private JPanel allOrderPanel;
-    private JPanel jobsPanel;
+    private JPanel groupBookingPanel;
 
     public HomeUI(MenuRepo menuRepo, ToppingRepo toppingRepo, OrderRepo orderRepo) {
 
@@ -47,14 +47,14 @@ public class HomeUI extends JFrame{
             }
         });
 
-        vacancyButton.addMouseListener(new MouseAdapter() {
+        makeGroupButton.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
                 super.mouseClicked(e);
-//                PizzaMenu menuGui = new PizzaMenu(menuRepo, toppingRepo);
-//                menuGui.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-//                menuGui.pack();
-//                menuGui.setVisible(true);
+                MakeGroupBooking menuGui = new MakeGroupBooking();
+                menuGui.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+                menuGui.pack();
+                menuGui.setVisible(true);
             }
         });
     }
