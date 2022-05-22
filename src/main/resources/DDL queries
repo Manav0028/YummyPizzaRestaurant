@@ -252,6 +252,20 @@ insert into menu (product_id,
                   pizza_sauce)
 values (24, 'p1 traditional large', 16.5, 'pizza', 332.4, 'traditional', 'large', 'barbeque');
 
+insert into topping (topping_name, topping_type, product_id ) values('supreme sizzle',null, 1);
+insert into topping (topping_name, topping_type, product_id ) values('Hawaiian',null, 2);
+insert into topping (topping_name, topping_type, product_id ) values('sweet chilli chicken','chicken', 2);
+insert into topping (topping_name, topping_type, product_id ) values('peri-peri chicken','chicken', 1);
+insert into topping (topping_name, topping_type, product_id ) values('garden goodness','veggie', 1);
+insert into topping (topping_name, topping_type, product_id ) values('vegan cheese','veggie', 1);
+
+insert into topping (topping_name, topping_type, product_id ) values('supreme sizzle',null, 3);
+insert into topping (topping_name, topping_type, product_id ) values('Hawaiian',null, 3);
+insert into topping (topping_name, topping_type, product_id ) values('sweet chilli chicken','chicken', 4);
+insert into topping (topping_name, topping_type, product_id ) values('peri-peri chicken','chicken', 4);
+insert into topping (topping_name, topping_type, product_id ) values('garden goodness','veggie', 4);
+insert into topping (topping_name, topping_type, product_id ) values('vegan cheese','veggie', 4);
+
 CREATE TABLE topping
 (
     topping_id   INT          NOT NULL,
@@ -272,19 +286,7 @@ e.	veggie lovers’ pizza
  */
 drop table topping;
 
-insert into topping (topping_name, topping_type, product_id ) values('supreme sizzle',null, 1);
-insert into topping (topping_name, topping_type, product_id ) values('Hawaiian',null, 2);
-insert into topping (topping_name, topping_type, product_id ) values('sweet chilli chicken','chicken', 2);
-insert into topping (topping_name, topping_type, product_id ) values('peri-peri chicken','chicken', 1);
-insert into topping (topping_name, topping_type, product_id ) values('garden goodness','veggie', 1);
-insert into topping (topping_name, topping_type, product_id ) values('vegan cheese','veggie', 1);
 
-insert into topping (topping_name, topping_type, product_id ) values('supreme sizzle',null, 3);
-insert into topping (topping_name, topping_type, product_id ) values('Hawaiian',null, 3);
-insert into topping (topping_name, topping_type, product_id ) values('sweet chilli chicken','chicken', 4);
-insert into topping (topping_name, topping_type, product_id ) values('peri-peri chicken','chicken', 4);
-insert into topping (topping_name, topping_type, product_id ) values('garden goodness','veggie', 4);
-insert into topping (topping_name, topping_type, product_id ) values('vegan cheese','veggie', 4);
 
 select * from menu m, topping t where m.product_id = t.product_id;
 
@@ -360,34 +362,6 @@ CREATE TABLE `customer` (
 
 drop table customer;
 
-insert into customer (first_name       ,
-                      last_name        ,
-                      email            ,
-                      phone            ,
-                      delivery_address,
-                      is_member)
-values ('Manav', 'Sharma', 'manav.s@gamil.com', 9879853346,
-        '1 Brown St, Ashfield, 2131, NSW', 1);
-
-insert into customer (first_name       ,
-                      last_name        ,
-                      email            ,
-                      phone            ,
-                      delivery_address,
-                      is_member)
-values ('Syafa', 'Sofiena', 'syafa.s@gamil.com', 9234563346,
-        '11 Brown St, Ashfield, 2131, NSW', 0);
-
-insert into customer (first_name       ,
-                      last_name        ,
-                      email            ,
-                      phone            ,
-                      delivery_address,
-                      is_member)
-values ('Jen', 'Wei', 'Jen.w@gamil.com', 9897969542,
-        '11 Kings St, Broadway, 2231, NSW', 0);
-
-select * from customer;
 
 # drop database yummy_pizza_restro;
 
@@ -403,6 +377,3 @@ select * from customer_order;
 delete from customer_order;
 
 delete from order_item;
-
-drop table job_application;
-drop table job_vacancy;
