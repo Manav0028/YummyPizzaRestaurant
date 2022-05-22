@@ -6,7 +6,7 @@ import java.sql.DriverManager;
 public class JDBCConnection {
     public Connection getConnection() {
         try {
-            Class.forName("com.mysql.jdbc.Driver");
+            Class.forName("com.mysql.cj.jdbc.Driver");
             Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/yummy_pizza_restro", "root", "Jwl86mysql");
             return conn;
         }
