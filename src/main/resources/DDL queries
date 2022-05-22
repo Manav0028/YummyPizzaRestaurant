@@ -403,3 +403,5 @@ select * from customer_order;
 delete from customer_order;
 
 delete from order_item;
+
+drop table customer;
